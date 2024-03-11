@@ -1,0 +1,7 @@
+<div class="pokemon-gallery">
+  <app-pokemon-card *ngFor="let pokemon of pokemonPreviews" [pokemon]="pokemon"></app-pokemon-card>
+</div>
+<div class="d-flex justify-content-center mt-3 mb-4">
+    <button class="btn btn-dark" (click)="loadMore()">Show more Pokemons</button>
+</div>
+

@@ -1,0 +1,17 @@
+<div id="container">
+    <div id="button" (click)="isDropdownActive = !isDropdownActive">
+        <div style="display: flex; width: 100%; justify-content: space-between;">
+            {{selectedType?.name || "Select a type"}}
+
+            <span *ngIf="selectedType" (click)="selectedType = undefined">x</span>
+        </div>
+
+    <div id="dropdown" [ngClass]="{ active: isDropdownActive}">
+        <ul>
+            <li *ngFor="let type of types">
+                <a href="#" (click)="selectedType = type; isDropdownActive = false; $event.stopImmediatePropagation()">{{type.name}}</a>
+            </li>
+        </ul>
+    </div>
+ </div>
+</div>

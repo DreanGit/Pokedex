@@ -1,0 +1,11 @@
+#container {
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: auto;
+}
+
+.search-bar {
+    max-width: 90%;
+    margin: 0 auto;
+}
