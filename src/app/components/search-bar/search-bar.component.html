@@ -2,10 +2,12 @@
 <div id="container">
   <div class="search-bar">
     <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search your pokemon" aria-label="Search" [(ngModel)]="searchTerm">
+      <input class="form-control me-2" type="search" placeholder="Search your pokemon" aria-label="Search" [(ngModel)]="searchTerm" (input)="onSearch()">
       <app-dropdown-filter></app-dropdown-filter>
     </form>
   </div>
 </div>
 
-  
+<div *ngFor="let pokemon of filteredPokemons">
+  {{ pokemon.name }} - {{ pokemon.url }} <!-- Ajusta según la estructura de tus datos -->
+</div>

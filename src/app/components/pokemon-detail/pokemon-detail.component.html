@@ -1,12 +1,13 @@
-<div *ngIf="pokemonDetail" class="container mt-4">
+<div *ngIf="pokemonDetail" class="container mt-4 position-relative">
     <div class="card pokemon-detail-card shadow-lg">
-        <div class="pokemon-image-wrapper">
+        <div class="pokemon-image-wrapper position-relative">
             <img [src]="pokemonDetail.imageUrl" class="pokemon-detail-image" alt="{{pokemonDetail.name}}">
             <div class="overlay-text top-left">{{ pokemonDetail.name | uppercase }}</div>
+            <div class="pokemon-id top-left" *ngIf="pokemonDetail.id">{{pokemonDetail.id}}</div>
             <div class="overlay-text top-right">HP: {{hpValue}}</div>
+            <h5 class="card-subtitle bottom-left ms-3 mb-2">Special Attack: {{specialAttackValue}}</h5>
         </div>
-        <div class="card-body">
-            <h5 class="card-subtitle mb-2">Special Attack: {{specialAttackValue}}</h5>
+        <div class="card-body d-flex justify-content-between">
             <h6 class="card-text">Stats:</h6>
                 <ul class="list-group list-group-flush details-left">
                     <li *ngFor="let stat of pokemonDetail.stats" class="list-group-item">{{ stat.name | uppercase }}: {{stat.value}}</li>
