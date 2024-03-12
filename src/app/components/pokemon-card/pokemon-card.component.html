@@ -1,11 +1,5 @@
-<!-- <div class="pokemon-card">
-    <img [src]="pokemon.imageUrl" alt="{{pokemon.name}}">
-    <h2>{{ pokemon.name | uppercase }}</h2>
-    <p>Strenght: {{ pokemon.strength }} </p>
-</div> -->
-
-<div class="pokemon-card">
+<div class="pokemon-card" (click)="viewDetails()">
     <img [src]="pokemon.imageUrl" alt="{{pokemon.name}}" class="img-fluid">
     <h2 class="mt-2">{{ pokemon.name | uppercase }}</h2>
-    <p class="text-muted">Strength: {{ pokemon.strength }} </p>
+    <p class="text-muted">Height: 90 </p>
 </div>

@@ -1,1 +1,23 @@
-<p>pokemon-detail works!</p>
+<div *ngIf="pokemonDetail" class="container mt-4">
+    <div class="card pokemon-detail-card shadow-lg">
+        <div class="pokemon-image-wrapper">
+            <img [src]="pokemonDetail.imageUrl" class="pokemon-detail-image" alt="{{pokemonDetail.name}}">
+            <div class="overlay-text top-left">{{ pokemonDetail.name | uppercase }}</div>
+            <div class="overlay-text top-right">HP: {{hpValue}}</div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-subtitle mb-2">Special Attack: {{specialAttackValue}}</h5>
+            <h6 class="card-text">Stats:</h6>
+                <ul class="list-group list-group-flush details-left">
+                    <li *ngFor="let stat of pokemonDetail.stats" class="list-group-item">{{ stat.name | uppercase }}: {{stat.value}}</li>
+                </ul>
+            <h6 class="card-text">Details:</h6>
+            <ul class="list-group list-group-flush details-right">
+                <li class="list-group-item">Height: {{pokemonDetail.height}}m</li>
+                <li class="list-group-item">Weight: {{pokemonDetail.weight}}kg</li>
+                <li class="list-group-item">Abilities: {{pokemonDetail.abilities.join(', ')}}</li>
+                <li class="list-group-item">Types: {{pokemonDetail.types.join(', ')}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

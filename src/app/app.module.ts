@@ -12,6 +12,7 @@ import { PokemonFavComponent } from './components/pokemon-fav/pokemon-fav.compon
 import { PokemonGalleryComponent } from './components/pokemon-gallery/pokemon-gallery.component';
 import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
 import { DropdownFilterComponent } from './components/dropdown-filter/dropdown-filter.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DropdownFilterComponent } from './components/dropdown-filter/dropdown-f
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

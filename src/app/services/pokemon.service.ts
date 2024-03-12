@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError, forkJoin } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { Observable, throwError} from 'rxjs';
+import { catchError, map} from 'rxjs/operators';
 
 import { PokemonPreview, PokemonDetail } from '../models/pokemon-models';
 import { environment } from 'src/enviroments/enviroment';
@@ -14,29 +14,28 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  // getAllPokemon(limit: number = 20, offset: number = 0): Observable<PokemonPreview[]> {
-  //   return this.http.get<any>(`${this.apiUrl}/pokemon?limit=${limit}&offset=${offset}`)
-  //   .pipe(
-  //     map((response: any) => response.results.map((pokemon: any) => {
-  //       return {
-  //         name: pokemon.name,
-  //         imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.url.split('/').filter(Boolean).pop()}.png`,
-  //         strength: 2,
-  //       } as PokemonPreview;
-  //     })),
-  //     catchError(error => throwError(error))
-  //   );
-  // }
-  
-  getAllPokemon(limit: number=20, offset: number=0)
+  getAllPokemon(limit: number = 20, offset: number = 0): Observable<PokemonPreview[]> {
+    return this.http.get<any>(`${this.apiUrl}/pokemon?limit=${limit}&offset=${offset}`)
+    .pipe(
+      map((response: any) => response.results.map((pokemon: any) => {
+        return {
+          name: pokemon.name,
+          imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.url.split('/').filter(Boolean).pop()}.png`
+        } as any;
+      })),
+      catchError(error => throwError(error))
+    );
+  }
 
   getPokemonDetail(pokemonName: string): Observable<PokemonDetail> {
     return this.http.get<any>(`${this.apiUrl}/pokemon/${pokemonName}`)
     .pipe(
       map(response => {
+        console.log(response);
         return {
           id: response.id,
           name: response.name,
+          imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${response.id}.png`,
           height: response.height,
           weight: response.weight,
           abilities: response.abilities.map((a: any) => a.ability.name),

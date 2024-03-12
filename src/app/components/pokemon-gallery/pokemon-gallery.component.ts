@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PokemonPreview } from '../../models/pokemon-models';
 import { PokemonService } from '../../services/pokemon.service';
 
@@ -12,7 +13,7 @@ export class PokemonGalleryComponent implements OnInit {
   limit = 20;
   offset = 0;
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(private pokemonService: PokemonService, public router: Router) { }
 
   ngOnInit(): void {
     this.loadPokemons();

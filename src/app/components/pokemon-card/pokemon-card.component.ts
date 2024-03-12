@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { PokemonPreview } from 'src/app/models/pokemon-models';
 
 @Component({
@@ -6,12 +7,13 @@ import { PokemonPreview } from 'src/app/models/pokemon-models';
   templateUrl: './pokemon-card.component.html',
   styleUrls: ['./pokemon-card.component.css']
 })
-export class PokemonCardComponent implements OnInit{
+export class PokemonCardComponent {
   @Input() pokemon!: PokemonPreview;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
+viewDetails(): void {
+  this.router.navigate(['/pokemon', this.pokemon.name])
+}
   
 }
